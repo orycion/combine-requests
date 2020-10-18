@@ -7,7 +7,7 @@
 
 import Combine
 
-public class ObservableRequest<Success, Failure: Error>: ObservableObject {
+open class ObservableRequest<Success, Failure: Error>: ObservableObject {
     @Published fileprivate var state: RequestState<Success, Failure> = .loading
 
     public var isLoading: Bool = true
