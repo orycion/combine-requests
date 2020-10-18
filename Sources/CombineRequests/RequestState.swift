@@ -28,9 +28,9 @@ import Foundation
     }
 
     /// The data if the request was successful.
-    var data: Success? {
-        if case .success(let data) = self {
-            return data
+    var output: Success? {
+        if case .success(let output) = self {
+            return output
         } else {
             return nil
         }

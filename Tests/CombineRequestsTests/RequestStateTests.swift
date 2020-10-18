@@ -23,21 +23,21 @@ final class RequestStateTests: XCTestCase {
         state = .success("output")
         XCTAssertFalse(state.isLoading)
 
-        state = .failure(NSError())
+        state = .failure(ExampleError())
         XCTAssertFalse(state.isLoading)
     }
 
-    func testData() {
+    func testOutput() {
         var state: RequestState<String, Error>
 
         state = .loading
-        XCTAssertNil(state.data)
+        XCTAssertNil(state.output)
 
         state = .success("output")
-        XCTAssertEqual(state.data, "output")
+        XCTAssertEqual(state.output, "output")
 
         state = .failure(ExampleError())
-        XCTAssertNil(state.data)
+        XCTAssertNil(state.output)
     }
 
     func testError() {
