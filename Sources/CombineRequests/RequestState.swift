@@ -5,8 +5,6 @@
 //  Created by Thomas Leese on 18/10/2020.
 //
 
-import Foundation
-
 /// Represents the state of a request.
 @frozen public enum RequestState<Success, Failure> where Failure: Error {
     /// The request is still loading, waiting for data or an error.
