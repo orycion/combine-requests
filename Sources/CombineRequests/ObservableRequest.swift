@@ -1,5 +1,5 @@
 //
-//  RequestStore.swift
+//  ObservableRequest.swift
 //  CombineRequests
 //
 //  Created by Thomas Leese on 18/10/2020.

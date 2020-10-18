@@ -1,5 +1,5 @@
 //
-//  RequestStoreTests.swift
+//  ObservableRequestTests.swift
 //  CombineRequests
 //
 //  Created by Thomas Leese on 18/10/2020.
@@ -10,7 +10,7 @@ import XCTest
 
 @testable import CombineRequests
 
-final class RequestStoreTests: XCTestCase {
+final class ObservableRequestTests: XCTestCase {
 
     func testAssignStore() {
         let store = ObservableRequest<String, NSError>()
