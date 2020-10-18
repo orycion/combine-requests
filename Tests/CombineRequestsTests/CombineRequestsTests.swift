@@ -8,8 +8,4 @@ final class CombineRequestsTests: XCTestCase {
         // results.
         XCTAssertEqual(CombineRequests().text, "Hello, World!")
     }
-
-    static var allTests = [
-        ("testExample", testExample),
-    ]
 }
