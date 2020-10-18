@@ -31,8 +31,8 @@ public class RequestPublisher<StateSuccess, StateFailure>: Publisher where State
     }
 }
 
-extension Publisher {
-    public func request() -> RequestPublisher<Self.Output, Self.Failure> {
+public extension Publisher {
+    func request() -> RequestPublisher<Self.Output, Self.Failure> {
         RequestPublisher(self)
     }
 }

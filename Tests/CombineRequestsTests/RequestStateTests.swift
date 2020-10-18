@@ -5,7 +5,7 @@
 //  Created by Thomas Leese on 18/10/2020.
 //
 
-import Foundation
+import Combine
 import XCTest
 
 @testable import CombineRequests
