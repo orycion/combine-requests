@@ -1,0 +1,16 @@
+name: CI
+
+on: [pull_request]
+
+jobs:
+  test:
+    name: Test
+
+    runs-on: macOS-latest
+
+    steps:
+      - run: brew install swiftlint
+      - uses: actions/checkout@master
+      - run: swiftlint
+      - run: swift build
+      - run: swift test
