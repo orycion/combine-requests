@@ -7,23 +7,33 @@
 
 import Combine
 
-public protocol RequestStore {
-    associatedtype Success
-    associatedtype Failure: Error
+public class ObservableRequest<Success, Failure: Error>: ObservableObject {
+    @Published fileprivate var state: RequestState<Success, Failure> = .loading
 
-    var isLoading: Bool { get set }
-    var output: Success? { get set }
-    var error: Failure? { get set }
+    public var isLoading: Bool = true
+    public var output: Success?
+    public var error: Failure?
+
+    private var cancellable: AnyCancellable?
+
+    public init() {
+        cancellable = $state.sink { state in
+            self.isLoading = state.isLoading
+
+            if !state.isLoading {
+                self.output = state.output
+                self.error = state.error
+            }
+        }
+    }
 }
 
 public extension Publisher {
-    func assignRequest<Root, Store: RequestStore>(
-        to keyPath: ReferenceWritableKeyPath<Root, Store>, on object: Root
-    ) -> AnyCancellable where Self.Output == RequestState<Store.Success, Store.Failure>, Self.Failure == Never {
-        sink { state in
-            object[keyPath: keyPath].isLoading = state.isLoading
-            object[keyPath: keyPath].output = state.output
-            object[keyPath: keyPath].error = state.error
-        }
+    func assign<S, F>(to observableRequest: ObservableRequest<S, F>) where Output == RequestState<S, F>, Failure == Never {
+        assign(to: &observableRequest.$state)
+    }
+
+    func assignRequest<S, F>(to observableRequest: ObservableRequest<S, F>) where Output == S, Failure == F {
+        request().assign(to: observableRequest)
     }
 }

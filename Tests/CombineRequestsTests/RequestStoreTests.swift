@@ -12,18 +12,10 @@ import XCTest
 
 final class RequestStoreTests: XCTestCase {
 
-    class Store: RequestStore {
-        var isLoading: Bool = false
-        var output: String?
-        var error: NSError?
-    }
-
-    var store = Store()
-
     func testAssignStore() {
-        _ = Result<String, NSError>.success("output").publisher
-            .request()
-            .assignRequest(to: \.store, on: self)
+        let store = ObservableRequest<String, NSError>()
+        Result<String, NSError>.success("output").publisher
+            .assignRequest(to: store)
 
         XCTAssertFalse(store.isLoading)
         XCTAssertEqual(store.output, "output")
