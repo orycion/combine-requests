@@ -17,7 +17,7 @@
     case failure(Failure)
 
     /// True if the state is loading.
-    var isLoading: Bool {
+    public var isLoading: Bool {
         if case .loading = self {
             return true
         } else {
@@ -26,7 +26,7 @@
     }
 
     /// The data if the request was successful.
-    var output: Success? {
+    public var output: Success? {
         if case .success(let output) = self {
             return output
         } else {
@@ -35,7 +35,7 @@
     }
 
     /// The error if the request was unsuccessful.
-    var error: Failure? {
+    public var error: Failure? {
         if case .failure(let error) = self {
             return error
         } else {
