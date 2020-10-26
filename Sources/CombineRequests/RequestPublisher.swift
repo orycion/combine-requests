@@ -35,4 +35,21 @@ public extension Publisher {
     func request() -> RequestPublisher<Self.Output, Self.Failure> {
         RequestPublisher(self)
     }
+
+    func sink<StateSuccess, StateFailure>(
+        receiveLoading: @escaping (() -> Void) = {},
+        receiveSuccess: @escaping ((StateSuccess) -> Void) = { _ in },
+        receiveFailure: @escaping ((StateFailure) -> Void) = { _ in }
+    ) -> AnyCancellable where Output == RequestState<StateSuccess, StateFailure>, Failure == Never {
+        sink { state in
+            switch state {
+            case .loading:
+                receiveLoading()
+            case .success(let output):
+                receiveSuccess(output)
+            case .failure(let error):
+                receiveFailure(error)
+            }
+        }
+    }
 }
