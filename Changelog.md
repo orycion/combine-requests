@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 0.1.3
+
+- Add sinkRequest method for publishers.
+
 ## 0.1.2
 
 - Make isLoading default to false on ObservableRequest.

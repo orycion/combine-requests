@@ -52,4 +52,12 @@ public extension Publisher {
             }
         }
     }
+
+    func sinkRequest(
+        receiveLoading: @escaping (() -> Void) = {},
+        receiveSuccess: @escaping ((Self.Output) -> Void) = { _ in },
+        receiveFailure: @escaping ((Self.Failure) -> Void) = { _ in }
+    ) -> AnyCancellable {
+        request().sink(receiveLoading: receiveLoading, receiveSuccess: receiveSuccess, receiveFailure: receiveFailure)
+    }
 }
