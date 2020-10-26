@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Make isLoading default to false on ObservableRequest.
+
 ## 0.1.1
 
 - Make isLoading, error and output properties on ObservableRequest publishers.
