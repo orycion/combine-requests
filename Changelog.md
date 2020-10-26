@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+## 0.1.2
+
+- Make isLoading default to false on ObservableRequest.
+- Add sink method for RequestPublisher.
+
 ## 0.1.1
 
 - Make isLoading, error and output properties on ObservableRequest publishers.

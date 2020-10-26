@@ -11,7 +11,7 @@ import Combine
 open class ObservableRequest<Success, Failure: Error>: ObservableObject {
     @Published fileprivate var state: RequestState<Success, Failure> = .loading
 
-    @Published public var isLoading: Bool = true
+    @Published public var isLoading: Bool = false
     @Published public var output: Success?
     @Published public var error: Failure?
 
