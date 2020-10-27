@@ -7,6 +7,9 @@
 
 /// Represents the state of a request.
 @frozen public enum RequestState<Success, Failure> where Failure: Error {
+    /// The request hasn't started yet.
+    case idle
+
     /// The request is still loading, waiting for data or an error.
     case loading
 

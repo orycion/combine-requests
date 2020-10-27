@@ -9,7 +9,7 @@ import Combine
 
 /// Observe a request.
 open class ObservableRequest<Success, Failure: Error>: ObservableObject {
-    @Published fileprivate var state: RequestState<Success, Failure> = .loading
+    @Published fileprivate var state: RequestState<Success, Failure> = .idle
 
     @Published public var isLoading: Bool = false
     @Published public var output: Success?

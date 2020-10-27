@@ -1,6 +1,8 @@
 # Changelog
 
-## Unreleased
+## 0.1.4
+
+- Add idle state for request states.
 
 ## 0.1.3
 

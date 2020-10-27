@@ -43,6 +43,8 @@ public extension Publisher {
     ) -> AnyCancellable where Output == RequestState<StateSuccess, StateFailure>, Failure == Never {
         sink { state in
             switch state {
+            case .idle:
+                break
             case .loading:
                 receiveLoading()
             case .success(let output):
